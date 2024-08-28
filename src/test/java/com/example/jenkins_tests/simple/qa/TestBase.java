@@ -1,6 +1,8 @@
 package com.example.jenkins_tests.simple.qa;
 
 import com.codeborne.selenide.Configuration;
+import helper.attach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -23,6 +25,12 @@ public class TestBase {
 
         // Maximize the browser window
         driver.manage().window().maximize();
+    }
+    @AfterEach
+     void addAttachments() {
+        attach.screenshotAs("Last screenshot");
+        attach.pageSource();
+        attach.browserConsoleLogs();
     }
 }
 
